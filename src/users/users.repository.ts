@@ -33,11 +33,11 @@ export class UserRepository extends Repository<User> {
       return user;
     } catch (error) {
       //E11000 duplicate key error collection
-      if (error.code.toString() === '11000') {
+      if (error.code === 11000) {
         throw new ConflictException('Endereço de email já está em uso');
       } else {
         throw new InternalServerErrorException(
-          'Erro ao salvar o usuário no banco de dados',
+          'Erro ao salvar o usuário no banco de dados: ' + error,
         );
       }
     }
