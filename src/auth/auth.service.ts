@@ -9,12 +9,14 @@ import { UserRole } from '../users/user-roles.enum';
 import { User } from '../users/user.entity';
 import { UserRepository } from '../users/users.repository';
 import { CredentialsDto } from './dto/credentials.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
+    private jwtService: JwtService,
   ) {}
 
   async signUp(createUserDto: CreateUserDto): Promise<User> {
@@ -31,5 +33,13 @@ export class AuthService {
     if (user === null) {
       throw new UnauthorizedException('Credenciais inválidas');
     }
+
+    const jwtPayload = {
+      id: user.id,
+    };
+
+    const jwtToken = await this.jwtService.sign(jwtPayload);
+
+    return { jwtToken };
   }
 }
