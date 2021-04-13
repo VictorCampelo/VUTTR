@@ -1,7 +1,7 @@
 import { Controller, Post, Body, ValidationPipe } from '@nestjs/common';
-import { CreateToolDto } from './dtos/create-tool.dto';
+import { CreateToolDto } from './dto/create-tool.dto';
 import { ToolsService } from './tools.service';
-import { ReturnToolDto } from './dtos/return-tool.dto';
+import { ReturnToolDto } from './dto/return-tool.dto';
 
 @Controller('tools')
 export class ToolsController {
