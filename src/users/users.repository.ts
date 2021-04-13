@@ -44,7 +44,6 @@ export class UserRepository extends Repository<User> {
      * o primeiro são os usuários encontrados,
      * o segundo o total de dados que satisfazem as condições especificadas,
      * ignorando a paginação */
-    console.log('entrou');
     const [users, total] = await query.getManyAndCount();
 
     return { users, total };
