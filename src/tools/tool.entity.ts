@@ -23,7 +23,7 @@ export class Tool extends BaseEntity {
   description: string;
 
   @Column({ nullable: false, type: 'varchar', length: 20 })
-  tags: [string];
+  tags: string[];
 
   @CreateDateColumn()
   createdAt: Date;
