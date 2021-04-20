@@ -13,9 +13,9 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   entities: [__dirname + process.env.TYPEORM_ENTITIES_OPTIONS as any],
   authSource: process.env.DB_AUTH || 'admin',
   synchronize: true,
-  migrations: ['src/configs/migrations/*.ts'],
+  migrations: [__dirname + '/migration/*.ts'],
   cli: {
     //entitiesDir: __dirname + '/../**/*.entity.{js,ts}',
-    migrationsDir: 'src/configs/migrations',
+    migrationsDir: __dirname + '/migration/',
   },
 };
