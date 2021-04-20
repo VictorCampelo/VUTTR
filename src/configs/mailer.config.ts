@@ -7,16 +7,16 @@ dotenv.config();
 
 export const mailerConfig: MailerOptions = {
   template: {
-    dir: path.resolve(__dirname, '..', '..', 'templates'),
+    dir: process.cwd() + '/templates',
     adapter: new HandlebarsAdapter(),
     options: {
       extName: '.hbs',
-      layoutsDir: path.resolve(__dirname, '..', '..', 'templates'),
+      layoutsDir: process.cwd() + '/templates',
     },
   },
   transport: {
     host: process.env.HOST_MAIL,
-    port: process.env.PORT_MAIL,
+    port: parseInt(process.env.PORT_MAIL),
     auth: {
       user: process.env.USER_MAIL,
       pass: process.env.PASS_MAIL,

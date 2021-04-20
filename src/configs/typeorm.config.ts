@@ -4,13 +4,18 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
-  type: (process.env.DB_TYPE as any) || 'mongodb',
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT) || 27017,
-  username: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || 'rootpassword',
-  database: process.env.DB_BASE || 'test',
-  entities: [__dirname + '/../**/*.entity.{js,ts}'],
+  type: process.env.TYPEORM_CONNECTION as any,
+  host: process.env.TYPEORM_HOST,
+  port: parseInt(process.env.DB_PORT),
+  username: process.env.TYPEORM_USERNAME,
+  password: process.env.TYPEORM_PASSWORD,
+  database: process.env.TYPEORM_DATABASE,
+  entities: [__dirname + process.env.TYPEORM_ENTITIES_OPTIONS as any],
   authSource: process.env.DB_AUTH || 'admin',
   synchronize: true,
+  migrations: ['src/configs/migrations/*.ts'],
+  cli: {
+    //entitiesDir: __dirname + '/../**/*.entity.{js,ts}',
+    migrationsDir: 'src/configs/migrations',
+  },
 };
