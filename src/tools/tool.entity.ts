@@ -1,20 +1,18 @@
 import {
-  BaseEntity,
   Entity,
   Unique,
-  //PrimaryGeneratedColumn,
+  BaseEntity,
+  PrimaryGeneratedColumn,
   Column,
-  ObjectIdColumn,
-  ObjectID,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('tool')
 @Unique(['id', 'title'])
 export class Tool extends BaseEntity {
-  @ObjectIdColumn()
-  id: ObjectID;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ nullable: false, type: 'varchar', length: 200 })
   title: string;
