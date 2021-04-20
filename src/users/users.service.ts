@@ -11,7 +11,6 @@ import { User } from './user.entity';
 import { UserRole } from './user-roles.enum';
 import { UpdateUserDto } from './dto/update-users.dto';
 import { FindUsersQueryDto } from './dto/find-users-query.dto';
-import { Types } from 'mongodb';
 
 @Injectable()
 export class UsersService {
