@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { CreateToolDto } from './dtos/create-tool.dto';
+import { CreateToolDto } from './dto/create-tool.dto';
 import { Tool } from './tool.entity';
 import {
   ConflictException,
