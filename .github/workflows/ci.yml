@@ -1,6 +1,11 @@
 name: Continuous Integration Testing
 
 on:
+  push:
+    branches:
+      - 'main'
+      - 'dev'
+      - 'build/ci-cd'
   pull_request:
     branches:
       - 'main'
