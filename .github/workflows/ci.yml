@@ -26,17 +26,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install yarn
-        run: npm install --global yarn
-      - name: yarn install
-        run: yarn ci
+      - name: npm install
+        run: npm ci
       - name: run docker-compose
         run: docker-compose -f 'docker-compose.postgresql.yml' up -d
       - name: permissions
         run: chmod +x ./scripts/wait-for-it.sh
       - name: wait for db
         run: ./scripts/wait-for-it.sh -t 0 pgsql:5432 -- echo "PostgreSql is up"
-      - name: yarn start:dev
-        run: yarn start:dev
-      - name: end docker-compose
+      - name: npm run start:dev
+        run: npm run start:dev
+      - name: down docker-compose
         run: docker-compose down
