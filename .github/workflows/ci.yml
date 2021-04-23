@@ -1,0 +1,36 @@
+name: Continuous Integration Testing
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+      - 'dev'
+      - 'build/ci-cd'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  initialization:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install yarn
+        run: npm install --global yarn
+      - name: yarn install
+        run: yarn ci
+      - name: run docker-compose
+        run: docker-compose -f 'docker-compose.postgresql.yml' up -d
+      - name: wait for db
+        run: chmod +x ./scripts/wait-for-it.sh
+        run: ./scripts/wait-for-it.sh -t 0 pgsql:5432 -- echo "PostgreSql is up"
+      - name: yarn start:dev
+        run: yarn start:dev
+      - name: end docker-compose
+        run: docker-compose down
