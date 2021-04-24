@@ -35,7 +35,7 @@ jobs:
       - name: permissions
         run: chmod +x ./scripts/wait-for-it.sh
       - name: wait for db
-        run: ./scripts/wait-for-it.sh -t 0 pgsql:5432 -- echo "PostgreSql is up"
+        run: ./scripts/wait-for-it.sh -t 0 pgsql:5432
       - name: npm run start:dev
         run: npm run start:dev
       - name: down docker-compose
