@@ -32,10 +32,6 @@ jobs:
         run: cp .env.example .env
       - name: run docker-compose
         run: docker-compose -f 'docker-compose.postgresql.yml' up -d
-      - name: permissions
-        run: chmod +x ./scripts/wait-for-it.sh
-      - name: wait for db
-        run: ./scripts/wait-for-it.sh -t 0 pgsql:5432
       - name: npm run start:dev
         run: npm run start:dev
       - name: down docker-compose
