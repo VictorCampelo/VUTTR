@@ -31,8 +31,4 @@ jobs:
       - name: create env file
         run: cp .env.example .env
       - name: run docker-compose
-        run: docker-compose -f 'docker-compose.postgresql.yml' up -d
-      - name: npm run start:dev
-        run: npm run start:dev
-      - name: down docker-compose
-        run: docker-compose down
+        run: docker-compose up -d
