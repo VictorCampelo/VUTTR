@@ -19,5 +19,6 @@ RUN ln -sf /usr/bin/msmtp /usr/sbin/sendmail
 # abrindo a porta 3000
 EXPOSE 3000
 
-# inicializando a API
-CMD [ "yarn", "start:dev" ]
+RUN chmod +x ./scripts/init.sh
+
+ENTRYPOINT ["./scripts/init.sh"]
