@@ -26,9 +26,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: install cross-env
+        run: npm install cross-env -D
       - name: create env file
         run: cp .env.example .env
       - name: run docker-compose
-        run: docker-compose up -d
+        run: npm run testdocker
       - name: down docker-compose
         run: docker-compose down
