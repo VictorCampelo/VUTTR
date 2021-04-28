@@ -20,5 +20,6 @@ RUN ln -sf /usr/bin/msmtp /usr/sbin/sendmail
 EXPOSE 3000
 
 RUN chmod +x ./scripts/init.sh
+RUN chmod +x ./scripts/wait-for-it.sh
 
 ENTRYPOINT ["./scripts/init.sh"]
