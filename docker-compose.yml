@@ -1,21 +1,23 @@
 version: '3.7'
 
 services:
-  api:
+  vuttr_api:
     build: .
-    image: nest
-    container_name: api
+    image: vuttr_nest
+    container_name: vuttr_api
+    restart: always
     ports:
       - '3000:3000'
     volumes:
-      - api-logs:/usr/src/node-api/logs:rw
+      - ./logs:/usr/src/vuttr/logs:rw
+      - ./src:/usr/src/vuttr/src
     environment:
       - NODE_ENV=${NODE_ENV}
     depends_on:
-      - pgsql
-  pgsql:
+      - vuttr_pgsql
+  vuttr_pgsql:
     image: postgres
-    container_name: 'pgsql'
+    container_name: 'vuttr_pgsql'
     restart: always
     volumes:
       - ./db:/docker-entrypoint-initdb.d/
@@ -30,7 +32,7 @@ services:
     ports:
       - '5432:5432'
 
-  adminer:
+  vuttr_adminer:
     image: adminer
     restart: always
     ports:

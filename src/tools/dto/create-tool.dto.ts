@@ -1,7 +1,10 @@
 import { IsNotEmpty, MaxLength, MinLength } from 'class-validator';
+import { UniqueOnDatabase } from 'src/validation/UniqueValidation';
+import { Tool } from '../tool.entity';
 
 export class CreateToolDto {
   @IsNotEmpty()
+  @UniqueOnDatabase(Tool)
   title: string;
 
   @MaxLength(200)

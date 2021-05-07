@@ -1,4 +1,5 @@
 import { User } from 'src/users/user.entity';
+import { Exclude } from 'class-transformer';
 import {
   Entity,
   Unique,
@@ -22,7 +23,7 @@ export class Tool extends BaseEntity {
   @Column({ nullable: false, type: 'varchar', length: 200 })
   description: string;
 
-  @Column({ nullable: false, type: 'varchar', length: 20 })
+  @Column('simple-array')
   tags: string[];
 
   @CreateDateColumn()
@@ -32,5 +33,6 @@ export class Tool extends BaseEntity {
   updatedAt: Date;
 
   @ManyToOne(() => User, (author: User) => author.posts)
+  @Exclude()
   public owner: User;
 }

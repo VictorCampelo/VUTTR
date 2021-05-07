@@ -15,4 +15,20 @@ export class ToolsService {
   async createTools(createToolDto: CreateToolDto, user: User): Promise<Tool> {
     return this.toolRepository.createTool(createToolDto, user);
   }
+  
+  async findByTag(tag: string): Promise<Tool[]> {
+    return this.toolRepository.FindToolsByTag(tag);
+  }
+
+  async findAll() {
+    return this.toolRepository.find();
+  }
+
+  async findByUser(user: User) {
+    return this.toolRepository.find({ where: { owner: user } });
+  }
+
+  async deleteTool(id: string) {
+    return this.toolRepository.delete(id);
+  }
 }
