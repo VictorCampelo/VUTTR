@@ -5,16 +5,18 @@ import {
   ConflictException,
   InternalServerErrorException,
 } from '@nestjs/common';
+import { User } from 'src/users/user.entity';
 
 @EntityRepository(Tool)
 export class ToolRepository extends Repository<Tool> {
   async createTool(
     createToolDto: CreateToolDto,
+    user: User
     //role: UserRole,
   ): Promise<Tool> {
     const { title, description, tags } = createToolDto;
 
-    const tool = this.create();
+    const tool = this.create({owner: user});
     tool.title = title;
     tool.description = description;
     tool.tags = tags;
