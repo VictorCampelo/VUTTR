@@ -1,3 +1,4 @@
+import { User } from 'src/users/user.entity';
 import {
   Entity,
   Unique,
@@ -6,6 +7,7 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity('tool')
@@ -28,4 +30,7 @@ export class Tool extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => User, (author: User) => author.posts)
+  public owner: User;
 }

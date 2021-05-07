@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/users/user.entity';
 import { CreateToolDto } from './dto/create-tool.dto';
 import { Tool } from './tool.entity';
 import { ToolRepository } from './tool.repository';
@@ -11,7 +12,7 @@ export class ToolsService {
     private toolRepository: ToolRepository,
   ) {}
 
-  async createTools(createToolDto: CreateToolDto): Promise<Tool> {
-    return this.toolRepository.createTool(createToolDto);
+  async createTools(createToolDto: CreateToolDto, user: User): Promise<Tool> {
+    return this.toolRepository.createTool(createToolDto, user);
   }
 }
