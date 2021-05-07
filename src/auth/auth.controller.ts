@@ -77,18 +77,18 @@ export class AuthController {
     };
   }
 
-/**
- * Patchs reset password
- * @param {String} token
- * @dto changePasswordDto 
- * @returns message 
- */
-@Patch('/reset-password/:token')
+  /**
+   * Patchs reset password
+   * @param {String} token
+   * @dto changePasswordDto
+   * @returns message
+   */
+  @Patch('/reset-password/:token')
   async resetPassword(
     @Param('token') token: string,
     @Body(ValidationPipe) changePasswordDto: ChangePasswordDto,
   ): Promise<{ message: string }> {
-    console.log(token)
+    console.log(token);
     await this.authService.resetPassword(token, changePasswordDto);
 
     return {
@@ -96,14 +96,14 @@ export class AuthController {
     };
   }
 
-/**
- * Patchs auth controller
- * @param id 
- * @dto changePasswordDto 
- * @param user 
- * @returns message
- */
-@Patch(':id/change-password')
+  /**
+   * Patchs auth controller
+   * @param id
+   * @dto changePasswordDto
+   * @param user
+   * @returns message
+   */
+  @Patch(':id/change-password')
   @UseGuards(AuthGuard())
   async changePassword(
     @Param('id') id: string,

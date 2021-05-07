@@ -29,4 +29,16 @@ export class ToolRepository extends Repository<Tool> {
       );
     }
   }
+
+  async FindToolsByTag(tag: string): Promise<Tool[]> {
+    const findTool = await this.find();
+
+    console.log(tag)
+
+    const tagFilter = findTool.filter(tool => {
+      return tool.tags.includes(tag);
+    });
+
+    return tagFilter;
+  }
 }
