@@ -4,6 +4,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import { WinstonModule } from 'nest-winston';
+import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { mailerConfig } from './configs/mailer.config';
 import { typeOrmConfig } from './configs/typeorm.config';
@@ -23,7 +24,7 @@ dotenv.config();
     AuthModule,
     ToolsModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [
     {
       provide: APP_INTERCEPTOR,
