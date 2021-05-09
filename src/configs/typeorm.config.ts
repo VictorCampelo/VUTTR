@@ -18,7 +18,9 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     //entitiesDir: __dirname + '/../**/*.entity.{js,ts}',
     migrationsDir: __dirname + '/migration/',
   },
+  ssl: true,
   extra: {
-    ssl: true,
-  },
+    ssl: {
+      rejectUnauthorized: false,
+    },
 };
