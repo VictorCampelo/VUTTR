@@ -10,12 +10,15 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
-  entities: [__dirname + process.env.TYPEORM_ENTITIES_OPTIONS as any],
+  entities: [(__dirname + process.env.TYPEORM_ENTITIES_OPTIONS) as any],
   authSource: process.env.DB_AUTH || 'admin',
   synchronize: true,
   migrations: [__dirname + '/migration/*.ts'],
   cli: {
     //entitiesDir: __dirname + '/../**/*.entity.{js,ts}',
     migrationsDir: __dirname + '/migration/',
+  },
+  extra: {
+    ssl: true,
   },
 };
