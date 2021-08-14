@@ -1,21 +1,21 @@
 <!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><p align="center">
   <a href="" rel="noopener">
- <img width=150px height=150px src="https://image.flaticon.com/icons/svg/912/912633.svg" alt="Backend para aplicação VUTTR"></a>
+ <img width=150px height=150px src="https://image.flaticon.com/icons/svg/912/912633.svg" alt="VUTTR"></a>
 </p>
 
-<h3 align="center">Backend para aplicação VUTTR</h3>
+<h3 align="center">VUTTR</h3>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/larabeatrizms/backend-vuttr">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/VictorCampelo/VUTTR">
   
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/larabeatrizms/backend-vuttr">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/VictorCampelo/VUTTR">
   
-  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/larabeatrizms/backend-vuttr">
+  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/VictorCampelo/VUTTR">
   
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/larabeatrizms/backend-vuttr">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/VictorCampelo/VUTTR">
 
 </div>
 
