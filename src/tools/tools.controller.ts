@@ -19,7 +19,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { GetUser } from 'src/auth/get-user.decorator';
 import { User } from 'src/users/user.entity';
-import { Tool } from './tool.entity'
+import { Tool } from './tool.entity';
 
 @Controller('tools')
 @UseGuards(AuthGuard(), RolesGuard)
@@ -41,31 +41,26 @@ export class ToolsController {
   }
 
   @Get()
-  async findByTag(
-    @Query() queryParam 
-  ): Promise<Tool[]>{
+  async findByTag(@Query() queryParam): Promise<Tool[]> {
     const tools = await this.toolsService.findByTag(queryParam.tag);
     return tools;
   }
 
   @Get('user')
-  async findByUser(
-    @GetUser() user: User
-  ): Promise<Tool[]>{
+  async findByUser(@GetUser() user: User): Promise<Tool[]> {
     const tools = await this.toolsService.findByUser(user);
     return tools;
   }
 
   @Get('all')
-  async findAll(
-  ){
+  async findAll() {
     const tools = await this.toolsService.findAll();
     return tools;
   }
 
   @Delete(':id')
   @HttpCode(204)
-  async delete(@Param('id') id: string,){
-    await this.toolsService.deleteTool(id)
+  async delete(@Param('id') id: string) {
+    await this.toolsService.deleteTool(id);
   }
 }

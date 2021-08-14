@@ -22,7 +22,7 @@ dotenv.config();
     MailerModule.forRoot(mailerConfig),
     UsersModule,
     AuthModule,
-    ToolsModule
+    ToolsModule,
   ],
   controllers: [AppController],
   providers: [
